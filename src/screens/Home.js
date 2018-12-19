@@ -4,6 +4,9 @@ import {ImageBackground, Text, View, StyleSheet} from 'react-native';
 import Button from './components/Button'
 
 export default class Home extends Component {
+    static navigationOptions = {
+      header: null
+    }
     render() {
       return (
         <View style={styles.container}>
@@ -16,7 +19,7 @@ export default class Home extends Component {
               <Text style={styles.TitleText}>PartyFinder</Text>
               <Text style={styles.ContentText}>Encontre seu par perfeito para sua próxima festa</Text>
             </View>
-          <Button/>
+          <Button onPress={() => this.props.navigation.navigate('Login')}/>
         </View>
       );
     };

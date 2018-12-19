@@ -1,0 +1,50 @@
+import React, {Component} from 'react'
+import {Dimensions, ImageBackground, Text, View, StyleSheet} from 'react-native';
+
+const width = Dimensions.get('window').width
+
+export default function Login(props){
+    return(
+        <ImageBackground
+            style={ styles.imgBackground } 
+            resizeMode='cover' 
+            source={require('../img/party2.jpg')}>
+            <View style={styles.BackgroundTextContainer}>
+                <Text style={styles.TitleText}>EAT.</Text>
+                <Text style={styles.TitleText}>SLEEP.</Text>
+                <Text style={styles.TitleText}>PARTY.</Text>
+                <Text style={styles.TitleText}>REPEAT.</Text>
+            </View>
+        </ImageBackground>
+
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    BackgroundTextContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        marginTop: '13%',
+        marginLeft: '39%',
+    },
+    imgBackground: {
+        width: width,
+        height: width-140,
+        flex: 1 ,
+    },
+    TitleText: {
+        textAlign: 'left',
+        fontSize: 32,
+        color: '#DCDCDC',
+        fontWeight: 'bold'
+    },
+    ContentText: {
+        textAlign: 'center',
+        fontSize: 20,
+        color: '#DCDCDC',   
+    },
+  });
+  
