@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Dimensions, TextInput, ImageBackground, TouchableNativeFeedback, Text, View, StyleSheet, Platform} from 'react-native';
 //Component
-import Home from './src/screens/Home'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -26,8 +25,8 @@ export default class App extends Component<Props> {
           <Text style={styles.TitleText}>PARTY.</Text>
           <Text style={styles.TitleText}>REPEAT.</Text>
         </View>
-      </ImageBackground>)
-      
+      </ImageBackground>
+      )
   }
 }
 

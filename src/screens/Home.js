@@ -8,14 +8,14 @@ export default class Home extends Component {
       return (
         <View style={styles.container}>
           <ImageBackground 
-            style={ styles.imgBackground } 
+            style={ styles.imgBackground }
             resizeMode='cover' 
             source={require('../img/party.jpg')}>
-            <View style={styles.BackgroundTextContainer}>
+          </ImageBackground>
+          <View style={styles.BackgroundTextContainer}>
               <Text style={styles.TitleText}>PartyFinder</Text>
               <Text style={styles.ContentText}>Encontre seu par perfeito para sua próxima festa</Text>
             </View>
-          </ImageBackground>
           <Button/>
         </View>
       );
@@ -24,23 +24,27 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: 'black'
   },
   BackgroundTextContainer: {
-      flex: 1,
-      flexDirection: 'column',
       width: '60%',
-      marginTop: '38%',
-      marginLeft: '20%',
+      marginTop: '48%',
+      justifyContent: 'center',
   },
   imgBackground: {
+      position: 'absolute',
       width: '100%',
       height: '100%',
-      flex: 1 
+      flex: 1, 
+      alignItems: 'center',
+      opacity: 0.7
   },
   TitleText: {
       textAlign: 'center',
       fontSize: 29,
-      color: '#DCDCDC'
+      color: '#DCDCDC',
   },
   ContentText: {
       textAlign: 'center',
