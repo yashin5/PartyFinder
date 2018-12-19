@@ -16,7 +16,6 @@ export default function Login(props){
                 <Text style={styles.titleText}>REPEAT.</Text>
             </View>
         </ImageBackground>
-
     );
 };
 
