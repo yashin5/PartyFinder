@@ -9,11 +9,11 @@ export default function Login(props){
             style={ styles.imgBackground } 
             resizeMode='cover' 
             source={require('../img/party2.jpg')}>
-            <View style={styles.BackgroundTextContainer}>
-                <Text style={styles.TitleText}>EAT.</Text>
-                <Text style={styles.TitleText}>SLEEP.</Text>
-                <Text style={styles.TitleText}>PARTY.</Text>
-                <Text style={styles.TitleText}>REPEAT.</Text>
+            <View style={styles.backgroundTextContainer}>
+                <Text style={styles.titleText}>EAT.</Text>
+                <Text style={styles.titleText}>SLEEP.</Text>
+                <Text style={styles.titleText}>PARTY.</Text>
+                <Text style={styles.titleText}>REPEAT.</Text>
             </View>
         </ImageBackground>
 
@@ -21,10 +21,7 @@ export default function Login(props){
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    BackgroundTextContainer: {
+    backgroundTextContainer: {
         flex: 1,
         flexDirection: 'column',
         marginTop: '13%',
@@ -35,16 +32,11 @@ const styles = StyleSheet.create({
         height: width-140,
         flex: 1 ,
     },
-    TitleText: {
+    titleText: {
         textAlign: 'left',
         fontSize: 32,
         color: '#DCDCDC',
         fontWeight: 'bold'
     },
-    ContentText: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: '#DCDCDC',   
-    },
-  });
+});
   

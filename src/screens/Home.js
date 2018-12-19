@@ -15,9 +15,9 @@ export default class Home extends Component {
             resizeMode='cover' 
             source={require('../img/party.jpg')}>
           </ImageBackground>
-          <View style={styles.BackgroundTextContainer}>
-              <Text style={styles.TitleText}>PartyFinder</Text>
-              <Text style={styles.ContentText}>Encontre seu par perfeito para sua próxima festa</Text>
+          <View style={styles.backgroundTextContainer}>
+              <Text style={styles.titleText}>PartyFinder</Text>
+              <Text style={styles.contentText}>Encontre seu par perfeito para sua próxima festa</Text>
             </View>
           <Button onPress={() => this.props.navigation.navigate('Login')}/>
         </View>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: 'black'
   },
-  BackgroundTextContainer: {
+  backgroundTextContainer: {
       width: '60%',
       marginTop: '48%',
       justifyContent: 'center',
@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       opacity: 0.7
   },
-  TitleText: {
+  titleText: {
       textAlign: 'center',
       fontSize: 29,
       color: '#DCDCDC',
   },
-  ContentText: {
+  contentText: {
       textAlign: 'center',
       fontSize: 20,
       color: '#DCDCDC',   
