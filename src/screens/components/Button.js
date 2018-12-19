@@ -4,7 +4,7 @@ import {TouchableNativeFeedback, View, Text, StyleSheet} from 'react-native'
 export default function Button(props){
     return(
         <TouchableNativeFeedback 
-
+            onPress={props.onPress}
             underlayColor="white">
             <View style={styles.button}>
               <Text style={styles.buttonText}>ENTRAR</Text>
