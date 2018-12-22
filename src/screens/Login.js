@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {ScrollView, Dimensions, ImageBackground, Text, View, StyleSheet} from 'react-native';
+import {ScrollView, Dimensions, View, StyleSheet} from 'react-native';
 //Component
 import Navigation from './components/Navegation'
 import Category from './components/Category'
