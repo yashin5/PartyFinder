@@ -10,8 +10,9 @@ export default function Button(props){
               <Text style={styles.buttonText}>ENTRAR</Text>
             </View>
           </TouchableNativeFeedback>
-    )
-}
+    );
+};
+
 const styles = StyleSheet.create({
     button: {
         width: '100%',
