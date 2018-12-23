@@ -1,18 +1,20 @@
 import React, {Component} from 'react'
 import {Image, View, Text, StyleSheet, Dimensions} from 'react-native'
-
 const width = Dimensions.get('window').width
 
 export default class Banner extends Component{
     render(){
         return(            
             <React.Fragment>
-                {this.props.events.map((event, index) =>(
+                {this.props.filter().map((event, index) =>(
                     <React.Fragment key={index}>
                         <View style={styles.showBannerContainer} >
-                            <Image style={this.props.showBanner? this.props.showBanner:styles.showBanner} source={event.bannerImage} />
+                            <Image style={this.props.showBanner? 
+                                this.props.showBanner:styles.showBanner} 
+                                source={event.bannerImage} 
+                            />
                         </View>
-                        <View style = {{flexDirection: 'row', justifyContent:'space-between', width: width-100}}>
+                        <View style={styles.showBannerContainer2}>
                                 <View style={styles.showBannerTextContainer}>
                                     <Text style={styles.showBannerTextDate}>{event.date}</Text>
                                     <Text style={styles.showBannerTextShow}>{event.name}</Text>
@@ -20,7 +22,6 @@ export default class Banner extends Component{
                                 <View>
                                     <Text style={styles.showBannerTextPeople}>{event.people} <Image source={require('../../img/people.png')} /></Text>
                                 </View> 
-                            
                         </View>
                     </React.Fragment> 
                 ))}
@@ -34,12 +35,17 @@ const styles = StyleSheet.create({
         marginTop: 18,
         alignItems: 'center',
      },
+     showBannerContainer2: {
+        flexDirection: 'row', 
+        justifyContent:'space-between',
+        width: width-30
+     },
      showBanner: {
         backgroundColor: 'black',
         opacity: 0.6,
         position: 'absolute',
         borderRadius: 10,
-        width: width-100,
+        width: width-30,
         height: width-300
      },
      showBannerTextContainer: {

@@ -1,12 +1,9 @@
 import React, {Component} from 'react'
 import {ScrollView, Dimensions, View, StyleSheet} from 'react-native';
-//Component
 import Navigation from './components/Navegation'
 import Category from './components/Category'
 import Banner from './components/Banner'
 import Background from './components/Background'
-
-
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
@@ -14,14 +11,15 @@ export default class Login extends Component{
     constructor(){
         super();
         this.state = {
+            filterCategory:'',
             filter: ['PROXIMIDADES', 'EM ALTA', 'FUTUROS', 'TODOS'],
             category:[{
                 name: 'Baladas',
-                icon: require('../img/dancing.png')
+                icon: require('../img/dancing.png'),
             },
             {   
                 name: 'Rave',
-                icon: require('../img/dj.png')
+                icon: require('../img/dj.png'),
             },
             {   
                 name: 'Rock',
@@ -31,24 +29,60 @@ export default class Login extends Component{
                 name: 'Cinema',
                 icon: require('../img/ticket.png')
             }],
-            events: [{
-                name: 'MATANZA',
-                date: '22 de Dezembro',
-                people: 45000,
-                bannerImage: require('../img/show.jpg')
-            },
-            {
-                name: 'MATANZA',
-                date: '22 de Dezembro',
-                people: 45000,
-                bannerImage: require('../img/party.jpg')
-            }]
+            events: ''
         };
     };
     static navigationOptions = {
         header: null
       };
     
+    componentWillMount(){
+        return this.setState({events:
+            [{
+                name: 'MATANZA',
+                date: '22 de Dezembro',
+                people: 45000,
+                bannerImage: require('../img/party.jpg'),
+                type: 'Rock'
+            },
+            {
+                name: 'OPAOPA',
+                date: '22 de Dezembro',
+                people: 45000,
+                bannerImage: require('../img/show.jpg'),
+                type: 'Rock'
+            },
+            {
+                name: 'AXÉ',
+                date: '22 de Dezembro',
+                people: 45000,
+                bannerImage: require('../img/party.jpg'),
+                type: 'Baladas'
+            }]
+        });
+    };
+
+    filterCategory = (category) =>{
+        if(category.name === this.state.filterCategory){
+            this.setState({filterCategory: ''})
+        }
+        else{
+            this.setState({filterCategory: category.name})
+        };
+    };
+
+    filterCategoryShows =() =>{
+        if(this.state.filterCategory){
+            return this.state.events.filter(event =>{
+                return event.type === this.state.filterCategory
+            });
+        }
+        else{
+            return this.state.events
+        };
+    };
+    
+
     render(){
         return(
             <ScrollView>
@@ -59,14 +93,19 @@ export default class Login extends Component{
                         titleText={styles.titleText}
                         backgroundTextContainer={styles.backgroundTextContainer}
                         text={["EAT.", "SLEEP.", "RAVE.", "REPEAT."]}
-                        backgroundImage={require('../img/party2.jpg')}/>
+                        backgroundImage={require('../img/party2.jpg')}
+                    />
                     <React.Fragment>
                         <Navigation filter={this.state.filter} />
                     </React.Fragment>
                     <React.Fragment>
-                        <Category categories={this.state.category}/>
+                        <Category  filter={this.filterCategory} 
+                            categories={this.state.category}
+                        />
                     </React.Fragment>
-                    <Banner events={this.state.events}/>
+                    <Banner filterCategory={this.state.filterCategory} 
+                        filter={this.filterCategoryShows} events={this.state.events}
+                    />
                 </View>
             </ScrollView>
         );
@@ -75,7 +114,7 @@ export default class Login extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        height: height+height/2,
+        height: height + height / 2 ,
         flex: 1,
         alignItems: 'center',
         backgroundColor: 'white'
@@ -100,4 +139,3 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-  

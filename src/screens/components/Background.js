@@ -6,10 +6,11 @@ export default class Background extends Component{
         return(
             <View style={{flex: this.props.flex? 1:null,
                 width: this.props.width,
-                height: this.props.height? this.props.height:null}}>
+                height: this.props.height? this.props.height:null}}
+            >
                 <ImageBackground 
                     style={ this.props.imgBackground }
-                    resizeMode='cover' 
+                    resizeMode="cover"
                     source={this.props.backgroundImage}
                 />
                 <View style={this.props.backgroundTextContainer}>

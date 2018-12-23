@@ -1,15 +1,18 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Dimensions} from 'react-native'
-
+import {TouchableOpacity, View, Text, StyleSheet, Dimensions} from 'react-native'
 const width = Dimensions.get('window').width
 
 export default class Navegation extends Component{
     render(){
         return (
             <View style={styles.nav}>
-                {this.props.filter.map((filter, index) =>
-                    <Text key={index} style={styles.navText}> {filter}</Text>
-                )}
+                {this.props.filter.map((filter, index) =>(
+                    <TouchableOpacity>
+                        <View>
+                            <Text key={index} style={styles.navText}> {filter}</Text>
+                        </View>
+                    </TouchableOpacity>
+                ))}
             </View>
         );
     };
@@ -27,7 +30,7 @@ const styles =StyleSheet.create({
         justifyContent: 'space-around',
         flexWrap: 'wrap',
         borderBottomColor: '#ccc',
-        borderBottomWidth: 1,
+        borderBottomWidth: 1
     },
     navText: {
     },

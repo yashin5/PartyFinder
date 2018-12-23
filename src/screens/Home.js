@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
 import {Dimensions, View, StyleSheet} from 'react-native';
-//Component
 import Button from './components/Button'
 import Background from './components/Background'
-
-
 const width = Dimensions.get('window').width
 
 export default class Home extends Component{
@@ -17,14 +14,14 @@ export default class Home extends Component{
         <View style={styles.container}>
           <Background
             width= {width}
-            flex= '1'
+            flex= "1"
             imgBackground={ styles.imgBackground }
             backgroundTextContainer= {styles.backgroundTextContainer}
             titleText = {styles.titleText}
             contentText = {styles.contentText}
             backgroundImage= {require('../img/party.jpg')}
             text= {['PartyFinder']}
-            text2= 'Encontre seu par perfeito para sua próxima festa'
+            text2= "Encontre seu par perfeito para sua próxima festa"
           />
           <Button onPress={() => this.props.navigation.navigate('Login')}/>
         </View>
