@@ -12,7 +12,7 @@ export default class Login extends Component{
         super();
         this.state = {
             filterCategory:'',
-            filter: ['PROXIMIDADES', 'EM ALTA', 'FUTUROS', 'TODOS'],
+            filter: 'PROXIMIDADES',
             category:[{
                 name: 'Baladas',
                 icon: require('../img/dancing.png'),
@@ -43,25 +43,30 @@ export default class Login extends Component{
                 date: '22 de Dezembro',
                 people: 45000,
                 bannerImage: require('../img/party.jpg'),
-                type: 'Rock'
+                type: 'Rock',
+                locate: 'Rio de Janeiro'
             },
             {
                 name: 'OPAOPA',
                 date: '22 de Dezembro',
                 people: 45000,
                 bannerImage: require('../img/show.jpg'),
-                type: 'Rock'
+                type: 'Rock',
+                locate: 'Rio de Janeiro'
             },
             {
                 name: 'AXÉ',
                 date: '22 de Dezembro',
                 people: 45000,
                 bannerImage: require('../img/party.jpg'),
-                type: 'Baladas'
+                type: 'Baladas',
+                locate: 'São Paulo'
             }]
         });
     };
-
+    filtering = (target) =>{
+        this.setState({filter: target});
+    };
     filterCategory = (category) =>{
         if(category.name === this.state.filterCategory){
             this.setState({filterCategory: ''})
@@ -72,13 +77,26 @@ export default class Login extends Component{
     };
 
     filterCategoryShows =() =>{
-        if(this.state.filterCategory){
-            return this.state.events.filter(event =>{
-                return event.type === this.state.filterCategory
-            });
-        }
-        else{
-            return this.state.events
+ 
+        switch (this.state.filter) {
+            case "PROXIMIDADES":
+                return this.state.filterCategory?
+                    this.state.events.filter(event =>{
+                        return event.type === this.state.filterCategory && event.locate === "Rio de Janeiro"
+                    })
+                    :
+                    this.state.events.filter(event =>{ 
+                        return event.locate === "Rio de Janeiro"});
+
+            case "TODOS":
+                return this.state.filterCategory?
+                    this.state.events.filter(event =>{
+                        return event.type === this.state.filterCategory
+                    })
+                    :
+                    this.state.events
+            default:
+                 return this.state.events
         };
     };
     
@@ -96,10 +114,11 @@ export default class Login extends Component{
                         backgroundImage={require('../img/party2.jpg')}
                     />
                     <React.Fragment>
-                        <Navigation filter={this.state.filter} />
+                        <Navigation filtering={this.filtering} onPressFilter={this.state.filter} filter={["PROXIMIDADES", "EM ALTA", "FUTUROS", "TODOS"]} />
                     </React.Fragment>
                     <React.Fragment>
-                        <Category  filter={this.filterCategory} 
+                        <Category  filterCategoryShows={this.filterCategoryShows} 
+                            filter={this.filterCategory} 
                             categories={this.state.category}
                         />
                     </React.Fragment>
