@@ -32,6 +32,7 @@ export default class Login extends Component{
             events: ''
         };
     };
+    
     static navigationOptions = {
         header: null
       };
@@ -64,9 +65,11 @@ export default class Login extends Component{
             }]
         });
     };
+
     filtering = (target) =>{
         this.setState({filter: target});
     };
+
     filterCategory = (category) =>{
         if(category.name === this.state.filterCategory){
             this.setState({filterCategory: ''})
@@ -77,7 +80,6 @@ export default class Login extends Component{
     };
 
     filterCategoryShows =() =>{
- 
         switch (this.state.filter) {
             case "PROXIMIDADES":
                 return this.state.filterCategory?
@@ -86,8 +88,8 @@ export default class Login extends Component{
                     })
                     :
                     this.state.events.filter(event =>{ 
-                        return event.locate === "Rio de Janeiro"});
-
+                        return event.locate === "Rio de Janeiro"
+                    });
             case "TODOS":
                 return this.state.filterCategory?
                     this.state.events.filter(event =>{
@@ -99,7 +101,6 @@ export default class Login extends Component{
                  return this.state.events
         };
     };
-    
 
     render(){
         return(
@@ -117,7 +118,7 @@ export default class Login extends Component{
                         <Navigation filtering={this.filtering} onPressFilter={this.state.filter} filter={["PROXIMIDADES", "EM ALTA", "FUTUROS", "TODOS"]} />
                     </React.Fragment>
                     <React.Fragment>
-                        <Category  filterCategoryShows={this.filterCategoryShows} 
+                        <Category  filterCategory={this.state.filterCategory} 
                             filter={this.filterCategory} 
                             categories={this.state.category}
                         />
@@ -142,8 +143,7 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: '10%',
         justifyContent: 'center',
-        alignItems: 'center',
-        
+        alignItems: 'center',    
     },
     imgBackground: {
         position: 'absolute',

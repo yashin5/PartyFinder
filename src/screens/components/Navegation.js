@@ -3,13 +3,6 @@ import {TouchableOpacity, View, Text, StyleSheet, Dimensions} from 'react-native
 const width = Dimensions.get('window').width
 
 export default class Navegation extends Component{
-    constructor(){
-        super();
-        this.state={navText:{color: 'black', fontWeight: '400'}};
-    };
-
-
-
     render(){
         return (
             <View style={styles.nav}>
@@ -17,7 +10,7 @@ export default class Navegation extends Component{
                     <TouchableOpacity onPress={() => this.props.filtering(filter)} key={index}>
                         <View>
                             {this.props.onPressFilter == filter?
-                                <Text style={[this.state.navText]}> {filter}</Text>
+                                <Text style={styles.selectText}> {filter}</Text>
                                 : <Text style={[styles.navText]}> {filter}</Text>
                             }
                         </View>
@@ -44,4 +37,7 @@ const styles =StyleSheet.create({
     },
     navText: {
     },
+    selectText: {
+        color: 'black', fontWeight: '400'
+    }
 })

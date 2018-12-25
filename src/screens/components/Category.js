@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
 import {Image, View, Text, TouchableOpacity, StyleSheet, Dimensions} from 'react-native'
-import Banner from './Banner'
 
 const width = Dimensions.get('window').width
 
-export default class Category extends Component{
-
+export default class Category extends Component{         
     render(){
         return(
             <View style={styles.categoriesContainer}>
@@ -15,18 +13,21 @@ export default class Category extends Component{
                 </View>
                 <View style={styles.navCategories}>
                      {this.props.categories.map((category, index) =>(
-                     <TouchableOpacity onPress={()=> this.props.filter(category)} key={index}>
-                         <View>
-                             <Image source={category.icon}/>
-                             <Text style={styles.navCategoriesText}>{category.name}</Text>
-                         </View>
-                     </TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={()=> this.props.filter(category)} key={index}
+                    >
+                        <View style={this.props.filterCategory===category.name?
+                            styles.selectCategpry
+                            :
+                            null} 
+                        >
+                            <Image source={category.icon}/>
+                            <Text >{category.name}</Text>
+                        </View>
+                    </TouchableOpacity>
                  ))}
-
                 </View>
-
             </View>
-            
         );
     };
 };
@@ -49,4 +50,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
      },
+     selectCategpry: {
+         opacity: 0.4
+     }
 })
