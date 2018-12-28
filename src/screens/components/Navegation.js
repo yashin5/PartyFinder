@@ -4,15 +4,18 @@ const width = Dimensions.get('window').width
 
 export default class Navegation extends Component{
     render(){
+        
+        const textStyle = filter => this.props.onPressFilter == filter?
+            styles.selectedText
+            :
+            styles.navText
+
         return (
             <View style={styles.nav}>
                 {this.props.filter.map((filter, index) =>(
                     <TouchableOpacity onPress={() => this.props.filtering(filter)} key={index}>
                         <View>
-                            {this.props.onPressFilter == filter?
-                                <Text style={styles.selectText}> {filter}</Text>
-                                : <Text style={[styles.navText]}> {filter}</Text>
-                            }
+                            <Text style={textStyle(filter)}> {filter}</Text>
                         </View>
                     </TouchableOpacity>
                 ))}
@@ -37,7 +40,7 @@ const styles =StyleSheet.create({
     },
     navText: {
     },
-    selectText: {
+    selectedText: {
         color: 'black', fontWeight: '400'
     }
 })

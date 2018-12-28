@@ -5,6 +5,13 @@ const width = Dimensions.get('window').width
 
 export default class Category extends Component{         
     render(){
+
+        const categoryStyle = category => 
+            this.props.filterCategory===category?
+                styles.selectCategpry
+                :
+                {alignItems: 'center'}
+
         return(
             <View style={styles.categoriesContainer}>
                 <View style={styles.categoriesTitle}>
@@ -16,11 +23,7 @@ export default class Category extends Component{
                     <TouchableOpacity 
                         onPress={()=> this.props.filter(category)} key={index}
                     >
-                        <View style={this.props.filterCategory===category.name?
-                            styles.selectCategpry
-                            :
-                            null} 
-                        >
+                        <View style={categoryStyle(category.name)}>
                             <Image source={category.icon}/>
                             <Text >{category.name}</Text>
                         </View>
@@ -49,8 +52,13 @@ const styles = StyleSheet.create({
         marginTop: 12,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        flexWrap: 'wrap'
+     },
+     category: {
+        alignItems: 'center'
      },
      selectCategpry: {
-         opacity: 0.4
+         opacity: 0.4,
+         alignItems: 'center'
      }
 })

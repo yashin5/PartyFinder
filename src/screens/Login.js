@@ -115,7 +115,10 @@ export default class Login extends Component{
                         backgroundImage={require('../img/party2.jpg')}
                     />
                     <React.Fragment>
-                        <Navigation filtering={this.filtering} onPressFilter={this.state.filter} filter={["PROXIMIDADES", "EM ALTA", "FUTUROS", "TODOS"]} />
+                        <Navigation filtering={this.filtering} 
+                            onPressFilter={this.state.filter} 
+                            filter={["PROXIMIDADES", "EM ALTA", "FUTUROS", "TODOS"]} 
+                        />
                     </React.Fragment>
                     <React.Fragment>
                         <Category  filterCategory={this.state.filterCategory} 

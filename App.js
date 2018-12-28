@@ -9,7 +9,7 @@ const App = createStackNavigator({
   Login: {screen: Login},
   Friends: {screen: Friends}
 }, {
-  initialRouteName: 'Login'
+  initialRouteName: 'Friends'
 });
 
 export default createAppContainer(App)

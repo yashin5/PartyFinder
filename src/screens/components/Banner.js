@@ -4,13 +4,16 @@ const width = Dimensions.get('window').width
 
 export default class Banner extends Component{
     render(){
+
+        const bannerImagetStyle = this.props.showBanner? 
+            this.props.showBanner:styles.showBanner
+
         return(            
             <React.Fragment>
                 {this.props.filter().map((event, index) =>(
                     <React.Fragment key={index}>
                         <View style={styles.showBannerContainer} >
-                            <Image style={this.props.showBanner? 
-                                this.props.showBanner:styles.showBanner} 
+                            <Image style={bannerImagetStyle} 
                                 source={event.bannerImage} 
                             />
                         </View>
