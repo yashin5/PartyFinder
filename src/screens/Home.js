@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Dimensions, View, StyleSheet} from 'react-native';
 import firebase from 'react-native-firebase'
-import FBSDK, {LoginManager} from 'react-native-fbsdk'
+import FBSDK, {AccessToken, LoginManager} from 'react-native-fbsdk'
 import Button from './components/Button'
 import Background from './components/Background'
 const width = Dimensions.get('window').width
@@ -15,18 +15,33 @@ export default class Home extends Component{
       header: null
     };
 
-    _fbAuth(){
-      LoginManager.logInWithReadPermissions(['public_profile']).then(
-        result => {
-          result.isCancelled?
-            console.warn('deu errado')
-            :
-            this.setState({login: true})
-          },
-        error =>{
-          console.warn('Deu erro no login'+error)
+
+     facebookLogin = async () => {
+      try {
+        const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
+    
+        if (result.isCancelled) {
+          throw new Error('User cancelled request'); // Handle this however fits the flow of your app
+        }        
+        this.props.navigation.navigate('Login')
+    
+        // get the access token
+        const data = await AccessToken.getCurrentAccessToken();
+    
+        if (!data) {
+          throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
         }
-      )
+    
+        // create a new firebase credential with the token
+        const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+    
+        // login with credential
+        const currentUser = await firebase.auth().signInWithCredential(credential);
+    
+        console.warn(JSON.stringify(currentUser.user.toJSON()))
+      } catch (e) {
+        console.error(e);
+      }
     }
 
     render() {
@@ -44,16 +59,12 @@ export default class Home extends Component{
             text2= "Encontre seu par perfeito para sua próxima festa"
           />
           <Button onPress={() => {
-            this._fbAuth()
-            return this.state.login?
-            this.props.navigation.navigate('Login')
-            :
-            console.warn('Erro no Login')}}/>
+            return this.facebookLogin() }}/>
         </View>
       );
     };
   };
-  // this.props.navigation.navigate('Login')
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
