@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "765280528013",
+    "firebase_url": "https://partyfinder-d64dc.firebaseio.com",
+    "project_id": "partyfinder-d64dc",
+    "storage_bucket": "partyfinder-d64dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765280528013:android:361760a870bc8973",
+        "android_client_info": {
+          "package_name": "com.partyfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765280528013-1r8g16r4od9h5ecvhitkuovvenqiibgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGdkRnzePDJ2vF2asF_BtLLGkwdTlvHb0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
